@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light-Speed, Gravitation and Quantum Instantaneity — Osborne & Pope (2007)</title>
+    
+    <!-- MathJax for LaTeX equations -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    
+    <style>
+        :root {
+            --text: #2c3e50;
+            --bg: #fefefe;
+            --accent: #2980b9;
+            --light-gray: #ecf0f1;
+            --mid-gray: #95a5a6;
+            --border: #ddd;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+        
+        /* Title page */
+        .title-page {
+            text-align: center;
+            padding: 80px 20px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 40px;
+        }
+        
+        .title-page h1 {
+            font-size: 2.2em;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        
+        .title-page .authors {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            color: var(--text);
+        }
+        
+        .title-page .publisher {
+            font-size: 1em;
+            color: var(--mid-gray);
+        }
+        
+        /* Table of Contents */
+        .toc {
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        
+        .toc h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.4em;
+        }
+        
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        
+        .toc-entry.chapter {
+            font-weight: bold;
+            margin-top: 15px;
+            padding-top: 10px;
+        }
+        
+        .toc-entry.section {
+            padding-left: 30px;
+            font-size: 0.95em;
+        }
+        
+        .toc-entry.subsection {
+            padding-left: 50px;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+        
+        .toc-entry a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .toc-entry a:hover {
+            color: var(--accent);
+        }
+        
+        /* Chapter headings */
+        .chapter {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid var(--border);
+        }
+        
+        .chapter h2 {
+            font-size: 1.6em;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+        
+        .chapter h2 .chapter-number {
+            font-size: 0.7em;
+            color: var(--mid-gray);
+            display: block;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+        
+        /* Section headings */
+        h3 {
+            font-size: 1.2em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        h4 {
+            font-size: 1.05em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        
+        /* Paragraphs */
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        /* Block quotes / postulates */
+        blockquote {
+            margin: 25px 0;
+            padding: 20px 25px;
+            background: var(--light-gray);
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+        }
+        
+        blockquote strong {
+            font-style: normal;
+        }
+        
+        /* Equations */
+        .equation {
+            margin: 20px 0;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .equation .eq-number {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--mid-gray);
+            font-size: 0.9em;
+        }
+        
+        /* Figures */
+        .figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .figure img {
+            max-width: 70%;
+            height: auto;
+        }
+        
+        .figure-caption {
+            font-size: 0.9em;
+            color: var(--mid-gray);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* Footnotes */
+        .footnote {
+            font-size: 0.85em;
+            color: var(--mid-gray);
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+            padding-top: 15px;
+            font-style: italic;
+        }
+        
+        .footnote sup {
+            color: var(--accent);
+        }
+        
+        /* Bibliography */
+        .bib-entry {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            text-indent: -30px;
+        }
+        
+        /* Index */
+        .index {
+            column-count: 2;
+            column-gap: 40px;
+            font-size: 0.9em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { font-size: 16px; }
+            .container { padding: 20px 15px; }
+            .title-page h1 { font-size: 1.6em; }
+            .index { column-count: 1; }
+        }
+        
+        /* Print */
+        @media print {
+            .container { max-width: 100%; }
+            .chapter { page-break-before: always; }
+        }
+    
+/* === PAGINATION === */
+@media print {
+  @page {
+    size: A4;
+    margin: 2.5cm 2cm;
+    @bottom-center {
+      content: counter(page);
+      font-family: Georgia, serif;
+      font-size: 10pt;
+      color: #666;
+    }
+  }
+  body { font-size: 12pt !important; }
+  #toc, #sidebar, .sidebar, .sidebar-overlay, .topbar, #toolbar,
+  #back-top, #progress, #page-indicator { display: none !important; }
+  main, .container, .content { 
+    padding: 0 !important; margin: 0 !important;
+    max-width: 100% !important;
+  }
+  h2 { page-break-before: always; }
+  h2:first-of-type { page-break-before: avoid; }
+  blockquote, figure, .equation, table { page-break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+}
+
+/* On-screen page indicator */
+#page-indicator {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  background: var(--bg, #1a1a2e);
+  border: 1px solid var(--border, #333);
+  color: var(--accent, #c9a84c);
+  font-family: Georgia, serif;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 900;
+  pointer-events: none;
+  user-select: none;
+}
+#page-indicator.visible { opacity: 0.6; }
+#page-indicator:hover { opacity: 0.9; }
+
+/* Show original page markers subtly */
+.page-marker {
+  display: block !important;
+  height: 0;
+  margin: 0;
+}
+.page-marker::before {
+  content: 'p. ' attr(data-page);
+  display: block;
+  font-size: 0.7em;
+  color: var(--accent2, #8b6914);
+  text-align: right;
+  margin: 0.8em 0 0.2em;
+  opacity: 0.3;
+}
+@media (max-width: 700px) {
+  .page-marker::before { display: none; }
+  #page-indicator { bottom: 0.5rem; right: 0.5rem; font-size: 0.7rem; }
+}
+/* === END PAGINATION === */
+
+</style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Title Page -->
+        <div class="title-page">
+            <h1>LIGHT-SPEED, GRAVITATION<br>AND<br>QUANTUM INSTANTANEITY</h1>
+            <div class="authors">
+                Anthony D. Osborne<br>
+                &amp;<br>
+                N. Vivian Pope
+            </div>
+            <div class="publisher">
+                Philosophical Enterprises<br>
+                Swansea, U.K.<br>
+                2007
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div style="text-align: center; color: var(--mid-gray); font-size: 0.9em; margin-bottom: 40px;">
+            <p>Published in 2007 by Philosophical Enterprises</p>
+            <p>ISBN 0-9503790-6-9</p>
+            <p>&copy; 2007, A. D. Osborne and N. V. Pope</p>
+            <p style="font-style: italic; font-size: 0.9em;">Printed and bound in Wales by Dinefwr Press, Ltd., Llandybie, Carmarthenshire</p>
+            <p style="font-size: 0.85em;">Cover photograph and portraits of authors by Gareth Llewellyn Williams, ZOOMSCAPE, Swansea<br>Cone model by N.V. Pope</p>
+        </div>
+        
+        <!-- TABLE OF CONTENTS -->
+        <!-- (Will be populated as chapters are completed) -->
+        
+        <!-- CONTENT BEGINS HERE -->
+        <!-- Chapters will be inserted as they are processed -->
+        
+    </div>
+
+<!-- Page indicator -->
+<div id="page-indicator"></div>
+<script>
+(function() {
+  var ind = document.getElementById('page-indicator');
+  if (!ind) return;
+  
+  // Estimate pages based on A4-equivalent content height (~900px per "page" at screen size)
+  var PAGE_HEIGHT = 900;
+  var scrollTimer;
+  var lastPage = -1;
+  
+  function updatePage() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var totalPages = Math.max(1, Math.ceil(document.documentElement.scrollHeight / PAGE_HEIGHT));
+    var currentPage = Math.min(totalPages, Math.floor(scrollTop / PAGE_HEIGHT) + 1);
+    
+    if (currentPage !== lastPage) {
+      ind.textContent = currentPage + ' / ' + totalPages;
+      lastPage = currentPage;
+    }
+    ind.classList.add('visible');
+    
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function() {
+      ind.classList.remove('visible');
+    }, 2000);
+  }
+  
+  // Throttled scroll handler
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        updatePage();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  
+  // Show briefly on load
+  setTimeout(updatePage, 500);
+})();
+</script>
+
+</body>
+</html>
